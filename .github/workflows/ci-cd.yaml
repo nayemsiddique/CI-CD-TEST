@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-   runs-on: windows-latest
+   runs-on: ubuntu-latest
    steps:
      - name: check out codes
        uses: actions/checkout@v3
@@ -19,6 +19,8 @@ jobs:
        run: dotnet restore
      - name: Build Application
        run: dotnet build -c Release --no-restore
+     - name: Automatic Testing
+       run: dotnet test --no-build
          
           
   
