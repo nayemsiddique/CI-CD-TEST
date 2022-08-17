@@ -1,2 +1,23 @@
 name: CI CD Integration
 
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: check out codes
+       uses: actions/checkout@v3
+     - name: Setup .NET 5
+       uses: actions/setup-dotnet@v2
+       with:
+         dotnet-version: '6.0.x'
+     - name: Restore Dependencies
+       run: dotnet restore
+     - name: Build Application
+       run: dotnet build -c Release --no-restore
+         
+          
+  
